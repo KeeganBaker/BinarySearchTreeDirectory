@@ -36,4 +36,11 @@
         this.leftChild = leftChild;
         this.rightChild = rightChild;
     }
+
+
+    // Method prints the data in it's node
+    public void display() {
+        System.out.printf("%s %s%nAdress: %s%nEmail: %s%nPhone Number: %s%n",
+        firstName, lastName, address, email, phoneNumber);
+    }
  }

@@ -1,19 +1,19 @@
 // File Name: Directory.java
-// Date Edited: 03/14/2024
+// Date Edited: 03/17/2024
 // Name: Keegan Baker
 // Project: CS 145 Lab 6
-// Purpose: This program will create a binary search tree that can be modified and displayed 
-//          by the user.
+// Purpose: This program acts as an interface to allow the user to modify, and display a
+//          binary search tree directory.
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 import java.util.Scanner;
 
 public class Directory {
+
     public static void main(String[] args) {
         
-        // tree manager object inserted here
-
-
+        // uses class SearchTreeManager to manipulate data structure
+        DirectoryManager tree = new DirectoryManager();
         Scanner sc = new Scanner(System.in);
         char command = 0;
 
@@ -22,7 +22,7 @@ public class Directory {
             System.out.println("\n==============================");
             System.out.println("\t1 - Add");
             System.out.println("\t2 - Delete");
-            System.out.println("\t3 - Search");
+            System.out.println("\t3 - Display");
             System.out.println("\t4 - Edit");
             System.out.println("\t5 - List # of records");
             System.out.println("\t0 - Quit");
@@ -37,21 +37,29 @@ public class Directory {
             case 'A':
             case 'a':
                 // Add entry
-
+                System.out.println();
+                tree.add();
             break;
 
             case '2':
             case 'D':
             case 'd':
                 // Delete entry
-
+                System.out.println();
+                tree.confirmDelete();
             break;
 
             case '3':
             case 'S':
             case 's':
-                // Search/display
-
+                // Display
+                System.out.println();
+                if (tree.root == null) { // message if directory is empty
+                    System.out.println("***  !! Directory is empty !!  ***");
+                    System.out.println("***  please create a new entry ***");
+                    break;
+                }
+                tree.inOrder(tree.root);
             break;
 
             case '4':
@@ -65,10 +73,8 @@ public class Directory {
             case 'V':
             case 'v':
                 // List # of records
-                System.out.println(
-                "\n************************" + 
-                "*************************");
-                
+                System.out.println();
+                tree.numOfRecords();
             break;
 
             case '0':
